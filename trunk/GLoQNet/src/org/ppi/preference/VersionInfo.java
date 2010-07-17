@@ -35,7 +35,8 @@ public class VersionInfo {
 	public String getApplicationVersion() {
 		String main = prop.getProperty("app.main.version");
 		String num = prop.getProperty("build.number");
-		return main + "." + num;
+		String flg = prop.getProperty("build.flag");
+		return main + "." + num + flg;
 	}
 
 }
