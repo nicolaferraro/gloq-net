@@ -15,6 +15,9 @@ import org.ppi.gui.screen.PreferencePanel;
 import org.ppi.gui.screen.QueryPanel;
 import org.ppi.gui.screen.ToolsPanel;
 import org.ppi.preference.Constants;
+import org.ppi.preference.VersionInfo;
+import org.ppi.resource.DefaultResourceManager;
+import org.ppi.resource.ResourceManager;
 
 public class MainWindow extends JFrame {
 
@@ -41,7 +44,8 @@ public class MainWindow extends JFrame {
 	
 	protected void setup() {
 		
-		setTitle(Constants.WINDOW_TITLE);
+		setTitle(Constants.APPLICATION_NAME + " v. " + VersionInfo.getInstance().getApplicationVersion());
+		setIconImage(new DefaultResourceManager().getResourceAsImage(ResourceManager.ICON));
 		setSize(Constants.INITIAL_WIDTH, Constants.INITIAL_HEIGHT);
 		setLocation(100, 50);
 		setExtendedState(Constants.INITIAL_MAXIMIZED_STATE);

@@ -1,6 +1,8 @@
 package org.ppi.core.algorithm;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -13,15 +15,17 @@ import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
 import org.ppi.core.matching.FindSubgraph;
 
-public class LocalMatching extends IncrementalExecutable<Set<Set<Matching>>, Set<Matching>> {
+public class QueryingLocalMatching extends IncrementalExecutable<Set<Set<Matching>>, Set<Matching>> {
 
-	List<Graph> graphs;
+	List<Graph> baseGraphs;
+	Graph query;
 	Dictionary primaryDict;
 	Dictionary secondaryDict;
 	int depth;
 	
-	public LocalMatching(List<Graph> graphs, Dictionary dict, int depth) {
-		this.graphs = graphs;
+	public QueryingLocalMatching(List<Graph> baseGraphs, Graph query, Dictionary dict, int depth) {
+		this.baseGraphs = baseGraphs;
+		this.query = query;
 		this.primaryDict = new Dictionary(dict); // copy 1
 		this.secondaryDict = new Dictionary(dict); // copy 2
 		this.depth = depth;
@@ -29,6 +33,20 @@ public class LocalMatching extends IncrementalExecutable<Set<Set<Matching>>, Set
 	
 	@Override
 	protected void execute() throws Exception {
+		Set<Set<Matching>> wholeAlignment = new LinkedHashSet<Set<Matching>>();
+		Set<Set<Matching>> lastAlignment = null;
+		do {
+			List<Graph> graphs = new LinkedList<Graph>(baseGraphs);
+			graphs.add(new Graph(query));
+			lastAlignment = computeLocalAlignment(graphs);
+			wholeAlignment.addAll(lastAlignment);
+		} while (lastAlignment.size() > 0);
+
+		result = wholeAlignment;
+	}
+	
+
+	protected Set<Set<Matching>> computeLocalAlignment(List<Graph> graphs) throws Exception {
 		
 		signalCurrentOperation("Computing local matching");
 		
@@ -81,7 +99,7 @@ public class LocalMatching extends IncrementalExecutable<Set<Set<Matching>>, Set
 			
 		} while(partial.size()>0);
 		
-		result = alignment;
+		return alignment;
 	}
 	
 }
