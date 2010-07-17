@@ -1,0 +1,12 @@
+a	b
+b	c
+c	d
+c	a
+ax	bx
+bx	cx
+cx	dx
+cx	ax
+ay	by
+by	cy
+cy	dy
+cy	ay
