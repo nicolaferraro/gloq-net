@@ -15,7 +15,6 @@ import org.ppi.core.tree.TreeBuilder;
 import org.ppi.core.tree.TreeMerger;
 import org.ppi.core.tree.TreeNode;
 
-
 public class PartialModelBuilder extends Executable<Model> {
 
 	List<Graph> graphs;

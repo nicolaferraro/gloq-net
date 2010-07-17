@@ -13,7 +13,6 @@ import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
 import org.ppi.core.matching.FindSubgraph;
 
-
 public class GlobalMatching extends IncrementalExecutable<Set<Matching>, Set<Matching>> {
 
 	List<Graph> graphs;

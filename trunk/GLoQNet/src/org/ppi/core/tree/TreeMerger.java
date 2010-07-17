@@ -14,7 +14,6 @@ import org.ppi.core.dictionary.DictionaryHelper;
 import org.ppi.core.graph.Node;
 import org.ppi.preference.Preferences;
 
-
 public class TreeMerger extends Executable<Set<TreeNode>> {
 	
 	private static final Node FAKE_NODE = new Node("FAKE");

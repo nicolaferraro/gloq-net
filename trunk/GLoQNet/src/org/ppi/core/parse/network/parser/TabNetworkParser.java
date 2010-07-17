@@ -9,7 +9,6 @@ import org.ppi.core.graph.Node;
 import org.ppi.core.parse.network.AbstractNetworkParser;
 import org.ppi.core.parse.network.NetworkParserResult;
 
-
 public class TabNetworkParser extends AbstractNetworkParser {
 
 	public TabNetworkParser() {

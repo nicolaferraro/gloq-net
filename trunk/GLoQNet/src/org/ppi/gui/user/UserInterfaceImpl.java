@@ -21,7 +21,6 @@ import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
 import org.ppi.gui.graph.VisualGraph;
 
-
 public class UserInterfaceImpl implements UserInterface {
 
 	@Override

@@ -22,7 +22,6 @@ import org.ppi.gui.execute.ObserverDialog;
 import org.ppi.gui.file.FileChooserManager;
 import org.ppi.gui.model.DictionaryModel;
 
-
 public class DictionaryPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;

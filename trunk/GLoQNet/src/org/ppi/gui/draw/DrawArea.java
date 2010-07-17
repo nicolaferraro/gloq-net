@@ -16,6 +16,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
@@ -31,7 +32,6 @@ import org.ppi.gui.draw.overlay.OverlayComponent;
 import org.ppi.gui.graph.VisualGraph;
 import org.ppi.gui.label.LabelGenerator;
 import org.ppi.gui.user.UserInterface;
-
 
 public class DrawArea extends JPanel {
 
@@ -556,6 +556,13 @@ public class DrawArea extends JPanel {
 		}
 		
 		c.validate();
+	}
+	
+	public BufferedImage exportAsImage() {
+		BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+		Graphics g = img.createGraphics();
+		this.paintComponent(g);
+		return img;
 	}
 	
 }

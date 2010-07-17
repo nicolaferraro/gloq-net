@@ -1,55 +1,21 @@
 package org.ppi;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import javax.swing.UIManager;
-
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-import org.ppi.gui.window.MainWindow;
-import org.ppi.preference.Preferences;
-
+import org.ppi.shell.ApplicationType;
+import org.ppi.shell.ParameterParser;
 
 public class Application {
 
-	protected static Logger logger;
-	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
-		PropertyConfigurator.configure(Application.class.getResource("/log4j.properties"));
+		ParameterParser parser = new ParameterParser(args);
 		
-		logger = Logger.getLogger(Application.class);
+		ApplicationType type = parser.getApplicationType();
 		
-		logger.info("Application Started");
-		
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch(Exception ex) {
+		if(type==ApplicationType.SHELL) {
+			ShellApplication.main(args);
+		} else {
+			GraphicalApplication.main(args);
 		}
-		
-		MainWindow window = new MainWindow();
-		
-		window.build();
-		window.setVisible(true);
-		
-		window.addWindowListener(new WindowAdapter() {
-			
-			@Override
-			public void windowClosing(WindowEvent e) {
-				
-				logger.info("Storing preferences");
-				
-				try {
-					Preferences.getInstance().persist();					
-				} catch (Exception e2) {
-				}
-				
-				logger.info("Application Closed");
-				System.exit(0);
-			}
-			
-		});
 		
 	}
 	

@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import org.ppi.common.execute.Executable;
 import org.ppi.common.execute.ExecutionObserver;
 
-
 public class ObserverDialog extends JDialog {
 	
 	private static final long serialVersionUID = 1L;

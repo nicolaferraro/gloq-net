@@ -6,9 +6,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-
-import java.util.List;
-
 import org.ppi.common.execute.Executable;
 import org.ppi.common.result.Matching;
 import org.ppi.core.dictionary.Dictionary;
@@ -19,6 +16,8 @@ import org.ppi.core.model.Symbol;
 import org.ppi.core.model.builder.PartialModelBuilder;
 import org.ppi.core.model.solver.OptimizedViterbiSolver;
 import org.ppi.core.tour.TourBuilder;
+
+import java.util.List;
 
 public class BestPartialMatching extends Executable<Matching> {
 	

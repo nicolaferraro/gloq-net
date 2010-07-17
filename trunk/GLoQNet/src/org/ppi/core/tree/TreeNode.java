@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.ppi.core.graph.Node;
 
-
 public class TreeNode {
 	
 	List<Node> nodes;

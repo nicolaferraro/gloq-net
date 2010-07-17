@@ -9,7 +9,6 @@ import org.ppi.common.result.Matching;
 import org.ppi.core.dictionary.Dictionary;
 import org.ppi.core.graph.Graph;
 
-
 public class FindSubgraph extends Executable<Set<Matching>> {
 	
 	Dictionary dict;

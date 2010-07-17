@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class Constants {
 
-	public static final String APPLICATION_VERSION = "1.02";
+	public static final String APPLICATION_VERSION = "1.10";
 	
 	public static final String WINDOW_TITLE = "Protein-Protein Interaction Networks Analysis v. " + APPLICATION_VERSION;
 	public static final int INITIAL_WIDTH = 850;
@@ -18,5 +18,8 @@ public class Constants {
 	public static final String TAB_GLOBAL_TITLE = "Global Alignment";
 	public static final String TAB_LOCAL_TITLE = "Local Alignment";
 	public static final String TAB_QUERY_TITLE = "Querying";
+	public static final String TAB_TOOLS_TITLE = "Tools";
+	
+	public static final String RESULT_MATCHINGS_SEPARATOR = "---";
 	
 }

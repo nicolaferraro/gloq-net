@@ -25,7 +25,6 @@ import org.ppi.core.parse.network.NetworkParserResult;
 import org.ppi.gui.execute.ObserverDialog;
 import org.ppi.gui.file.FileChooserManager;
 
-
 public class NetworkPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;

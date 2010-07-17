@@ -7,7 +7,6 @@ import org.ppi.common.Observer;
 import org.ppi.core.dictionary.Dictionary;
 import org.ppi.core.dictionary.Dictionary.Entry;
 
-
 public class DictionaryModel extends AbstractTableModel implements Observer {
 	
 	private static final long serialVersionUID = 1L;

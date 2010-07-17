@@ -34,8 +34,8 @@ public class OptimizedViterbiSolver extends Executable<Matching> {
 		
 		signalCurrentOperation("Finding a matching");
 		
-		TreeMap<Configuration, Double> states = new TreeMap<Configuration, Double>();
-		states.put(new Configuration(hmm.getBeginState(), null), Math.log(1));
+		TreeMap<Configuration, PairOfDouble> states = new TreeMap<Configuration, PairOfDouble>();
+		states.put(new Configuration(hmm.getBeginState(), null), new PairOfDouble(Math.log(1), Math.log(1)));
 		
 		int i=0;
 		int n = tour.size();
@@ -47,30 +47,38 @@ public class OptimizedViterbiSolver extends Executable<Matching> {
 			}
 			i++;
 			
-			TreeMap<Configuration, Double> nextStates = new TreeMap<Configuration, Double>();
+			TreeMap<Configuration, PairOfDouble> nextStates = new TreeMap<Configuration, PairOfDouble>();
 			
-			for(Map.Entry<Configuration, Double> en : states.entrySet()) {
+			for(Map.Entry<Configuration, PairOfDouble> en : states.entrySet()) {
 				Configuration cf = en.getKey();
-				double preLog = en.getValue();
+				PairOfDouble prePair = en.getValue();
 				
 				Map<State, TransitionType> trans = hmm.getTransitions(cf.getState());
 				
 				for(Map.Entry<State, TransitionType> t : trans.entrySet()) {
+					boolean matchingTrans;
 					double prob;
 					
 					switch(t.getValue()) {
 					case MATCHING_TRANSITION:
 						prob = Preferences.getInstance().getMatchingTransition();
+						matchingTrans = true;
 						break;
 					case FAILING_TRANSITION:
 						prob = Preferences.getInstance().getFailingTransition();
+						matchingTrans = false;
 						break;
 					default:
 						throw new RuntimeException("Unknown transition type");
 					}
 					
 					State dest = t.getKey();
-					double nextProb = preLog + Math.log(prob) + Math.log(dest.outputProbability(sym, dict));
+					double nextProb = prePair.value + Math.log(prob) + Math.log(dest.outputProbability(sym, dict));
+					
+					double nextScoringProb = prePair.scoringValue;
+					if(matchingTrans) {
+						nextScoringProb = prePair.scoringValue + Math.log(prob) + Math.log(dest.outputProbability(sym, dict));
+					}
 					
 					if(nextProb==Double.NEGATIVE_INFINITY)
 						continue;
@@ -88,12 +96,12 @@ public class OptimizedViterbiSolver extends Executable<Matching> {
 					Configuration ncf = new Configuration(dest, chosenMatching);
 					
 					if(!nextStates.containsKey(ncf)) {
-						nextStates.put(ncf, nextProb);
+						nextStates.put(ncf, new PairOfDouble(nextProb, nextScoringProb));
 					} else {
-						double oldVal = nextStates.get(ncf);
+						double oldVal = nextStates.get(ncf).value;
 						if(nextProb>oldVal) {
 							nextStates.remove(ncf);
-							nextStates.put(ncf, nextProb);
+							nextStates.put(ncf, new PairOfDouble(nextProb, nextScoringProb));
 						}
 					}
 					
@@ -110,10 +118,14 @@ public class OptimizedViterbiSolver extends Executable<Matching> {
 		
 		Matching max = null;
 		double logVal = Double.NEGATIVE_INFINITY;
-		for(Map.Entry<Configuration, Double> en : states.entrySet()) {
-			if(en.getValue()>logVal) {
-				logVal = en.getValue();
+		for(Map.Entry<Configuration, PairOfDouble> en : states.entrySet()) {
+			if(en.getValue().value>logVal) {
+				logVal = en.getValue().value;
 				max = en.getKey().getChosenMatching();
+				if(max!=null) {
+					max.setLogScore(logVal);
+					max.setMatchingTransitionsLogScore(en.getValue().scoringValue);
+				}
 				
 				checkPoint();
 			}
@@ -177,6 +189,17 @@ public class OptimizedViterbiSolver extends Executable<Matching> {
 			if(this.hashCode()>o.hashCode())
 				return 1;
 			return 0;
+		}
+		
+	}
+	
+	class PairOfDouble {
+		protected double value;
+		protected double scoringValue;
+		
+		public PairOfDouble(double value, double scoringValue) {
+			this.value = value;
+			this.scoringValue = scoringValue;
 		}
 		
 	}

@@ -9,7 +9,6 @@ import org.ppi.common.ObservableObject;
 import org.ppi.common.Observer;
 import org.ppi.core.graph.Graph;
 
-
 public class NetworkManager implements Observable {
 	
 	protected static NetworkManager instance;

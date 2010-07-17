@@ -6,7 +6,6 @@ import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
 import org.ppi.gui.graph.VisualGraph;
 
-
 public interface UserInterface {
 
 	public boolean canDeleteNode(Node n, Graph g, Container c);

@@ -39,7 +39,7 @@ public class ResultModel extends AbstractTableModel implements
 	public int getColumnCount() {
 		if (alignment.size() == 0)
 			return 0;
-		return alignment.get(0).getNodeList().size() + 1;
+		return alignment.get(0).getNodeList().size() + 2;
 	}
 
 	@Override
@@ -51,6 +51,8 @@ public class ResultModel extends AbstractTableModel implements
 	public String getColumnName(int column) {
 		if (alignment.size()>0 && column == alignment.get(0).getNodeList().size())
 			return "Average Similarity";
+		else if (alignment.size()>0 && column == alignment.get(0).getNodeList().size() + 1)
+			return "Alignment Score";
 		return "Protein " + (column + 1);
 	}
 
@@ -62,7 +64,7 @@ public class ResultModel extends AbstractTableModel implements
 
 		if (columnIndex < nodes.size()) {
 			return nodes.get(columnIndex).getName();
-		} else {
+		} else if(columnIndex == nodes.size()) {
 
 			double simSum = 0;
 			int count = 0;
@@ -84,6 +86,8 @@ public class ResultModel extends AbstractTableModel implements
 			}
 			
 			return "" + totalSim;
+		} else {
+			return "" + m.getMatchingTransitionsLogScore();
 		}
 
 	}

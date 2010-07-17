@@ -18,7 +18,6 @@ import org.ppi.core.model.State;
 import org.ppi.core.model.Symbol;
 import org.ppi.core.tree.TreeNode;
 
-
 import static org.ppi.core.model.TransitionType.*;
 
 public class TreeModelBuilder extends Executable<Model> {

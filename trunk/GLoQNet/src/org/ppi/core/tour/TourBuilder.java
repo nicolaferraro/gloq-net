@@ -12,7 +12,6 @@ import org.ppi.core.tree.SingleTreeNode;
 import org.ppi.core.tree.TreeBuilder;
 import org.ppi.core.tree.TreeNode;
 
-
 public class TourBuilder extends Executable<List<Symbol>> {
 
 	Graph graph;

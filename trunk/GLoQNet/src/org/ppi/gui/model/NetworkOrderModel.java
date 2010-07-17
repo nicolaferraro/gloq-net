@@ -9,7 +9,6 @@ import org.ppi.common.Observer;
 import org.ppi.common.manager.NetworkManager;
 import org.ppi.core.graph.Graph;
 
-
 public class NetworkOrderModel extends AbstractListModel implements Observer {
 	
 	private static final long serialVersionUID = 1L;

@@ -8,7 +8,6 @@ import org.ppi.common.execute.Executable;
 import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
 
-
 public class TreeBuilder extends Executable<SingleTreeNode> {
 
 	int depth;

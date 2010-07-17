@@ -13,8 +13,8 @@ import org.ppi.gui.screen.LocalAlignmentPanel;
 import org.ppi.gui.screen.NetworkPanel;
 import org.ppi.gui.screen.PreferencePanel;
 import org.ppi.gui.screen.QueryPanel;
+import org.ppi.gui.screen.ToolsPanel;
 import org.ppi.preference.Constants;
-
 
 public class MainWindow extends JFrame {
 
@@ -26,6 +26,7 @@ public class MainWindow extends JFrame {
 	GlobalAlignmentPanel globalPanel;
 	LocalAlignmentPanel localPanel;
 	QueryPanel queryPanel;
+	ToolsPanel toolsPanel;
 	
 	JTabbedPane tabPane;
 
@@ -67,6 +68,9 @@ public class MainWindow extends JFrame {
 		
 		queryPanel = new QueryPanel();
 		tabPane.addTab(Constants.TAB_QUERY_TITLE, queryPanel);
+		
+		toolsPanel = new ToolsPanel();
+		tabPane.addTab(Constants.TAB_TOOLS_TITLE, toolsPanel);
 		
 	}
 	

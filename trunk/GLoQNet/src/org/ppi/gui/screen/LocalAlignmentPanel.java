@@ -17,7 +17,6 @@ import org.ppi.gui.execute.ObserverDialog;
 import org.ppi.gui.result.LocalResultPanel;
 import org.ppi.preference.Preferences;
 
-
 public class LocalAlignmentPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
