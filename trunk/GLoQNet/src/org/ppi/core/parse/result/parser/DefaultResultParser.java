@@ -33,7 +33,7 @@ public class DefaultResultParser extends AbstractResultParser {
 			public int compare(Set<Matching> o1, Set<Matching> o2) {
 				if(o1.size()!=o2.size())
 					return o2.size() - o1.size();
-				return 1;
+				return o1.hashCode()-o2.hashCode();
 			}
 		});
 		int errorCount = 0;
@@ -69,6 +69,8 @@ public class DefaultResultParser extends AbstractResultParser {
 			
 			if (rowLength==null) {
 				rowLength = lineRes.size();
+				Matching m = new Matching(nodes);
+				currentMatchings.add(m);
 			} else {
 				if(nodes.size()==rowLength) {
 					Matching m = new Matching(nodes);

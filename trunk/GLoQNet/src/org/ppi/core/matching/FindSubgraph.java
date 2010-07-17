@@ -1,6 +1,6 @@
 package org.ppi.core.matching;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -11,7 +11,8 @@ import org.ppi.core.graph.Graph;
 
 public class FindSubgraph extends Executable<Set<Matching>> {
 	
-	Dictionary dict;
+	Dictionary primaryDict;
+	Dictionary secondaryDict;
 	List<Graph> graphs;
 	int depth;
 	
@@ -19,7 +20,12 @@ public class FindSubgraph extends Executable<Set<Matching>> {
 	Matching primaryMatching;
 	
 	public FindSubgraph(Dictionary dict, List<Graph> graphs, int depth) {
-		this.dict=dict;
+		this(dict, dict, graphs, depth);
+	}
+	
+	public FindSubgraph(Dictionary primaryDict, Dictionary secondaryDict, List<Graph> graphs, int depth) {
+		this.primaryDict=primaryDict;
+		this.secondaryDict=secondaryDict;
 		this.graphs=graphs;
 		this.depth=depth;
 	}
@@ -29,9 +35,9 @@ public class FindSubgraph extends Executable<Set<Matching>> {
 		
 		signalCurrentOperation("Finding a matching subgraph");
 		
-		Set<Matching> matchings = new HashSet<Matching>();
+		Set<Matching> matchings = new LinkedHashSet<Matching>();
 		
-		BestMatching bm = new BestMatching(dict, graphs, depth);
+		BestMatching bm = new BestMatching(primaryDict, graphs, depth);
 		launchSubProcedure(bm);
 		
 		if(!bm.hasCompleted())
@@ -46,7 +52,7 @@ public class FindSubgraph extends Executable<Set<Matching>> {
 			Matching sm;
 			
 			do {
-				BestPartialMatching pm = new BestPartialMatching(dict, graphs, depth, matchings);
+				BestPartialMatching pm = new BestPartialMatching(secondaryDict, graphs, depth, matchings);
 				launchSubProcedure(pm);
 				
 				if(!pm.hasCompleted())

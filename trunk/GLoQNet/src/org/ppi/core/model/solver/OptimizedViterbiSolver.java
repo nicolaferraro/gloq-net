@@ -77,7 +77,8 @@ public class OptimizedViterbiSolver extends Executable<Matching> {
 					
 					double nextScoringProb = prePair.scoringValue;
 					if(matchingTrans) {
-						nextScoringProb = prePair.scoringValue + Math.log(prob) + Math.log(dest.outputProbability(sym, dict));
+						System.out.println("DEBUUU: " + cf.getState().getName() + "-->" + dest.getName());
+						nextScoringProb = prePair.scoringValue + dest.outputProbability(sym, dict);
 					}
 					
 					if(nextProb==Double.NEGATIVE_INFINITY)

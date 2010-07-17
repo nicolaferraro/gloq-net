@@ -1,12 +1,2 @@
-a	b
-b	c
-c	d
-c	a
-ax	bx
-bx	cx
-cx	dx
-cx	ax
-ay	by
-by	cy
-cy	dy
-cy	ay
+a2	b2
+b2	c2
