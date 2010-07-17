@@ -17,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import org.apache.log4j.Logger;
+
 import org.ppi.common.execute.PartialResultObserver;
 import org.ppi.common.result.Matching;
 import org.ppi.common.store.ResultWriter;
@@ -26,8 +27,8 @@ import org.ppi.gui.draw.DrawPanelFactory;
 import org.ppi.gui.execute.ObserverDialog;
 import org.ppi.gui.file.FileChooserManager;
 import org.ppi.gui.graph.GraphMerger;
+import org.ppi.gui.graph.NTGraphMerger;
 import org.ppi.gui.model.ResultModel;
-
 
 public class ResultPanel extends JPanel implements
 		PartialResultObserver<Set<Matching>> {
@@ -119,7 +120,7 @@ public class ResultPanel extends JPanel implements
 				if(mat.size()==0)
 					return;
 				
-				GraphMerger merger = new GraphMerger(currentGraphs, mat);
+				GraphMerger merger = new NTGraphMerger(currentGraphs, mat);
 				
 				ObserverDialog dialog = new ObserverDialog(merger);
 				

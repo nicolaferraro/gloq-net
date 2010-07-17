@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 
 public class DefaultResourceManager implements ResourceManager {
 	
-	protected static final String BASE_PATH = "/org/ppi/res/";
+protected static final String BASE_PATH = "/res/";
 	
 	@Override
 	public URL getResource(int code) {
@@ -19,6 +19,8 @@ public class DefaultResourceManager implements ResourceManager {
 			return this.getClass().getResource(BASE_PATH+"move.png");
 		case EDGE_BTN:
 			return this.getClass().getResource(BASE_PATH+"edge.png");
+		case SAVE:
+			return this.getClass().getResource(BASE_PATH+"save.png");
 		}
 		
 		throw new IllegalArgumentException("Unknown code");

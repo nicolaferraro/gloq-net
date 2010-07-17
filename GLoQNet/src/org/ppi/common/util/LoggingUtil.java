@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+
 import org.ppi.common.result.Matching;
 import org.ppi.core.graph.Node;
-
 
 public class LoggingUtil {
 

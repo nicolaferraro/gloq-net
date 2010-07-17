@@ -2,9 +2,6 @@ package org.ppi.core.matching;
 
 import java.util.ArrayList;
 
-
-import java.util.List;
-
 import org.ppi.common.execute.Executable;
 import org.ppi.common.result.Matching;
 import org.ppi.core.dictionary.Dictionary;
@@ -14,6 +11,8 @@ import org.ppi.core.model.Symbol;
 import org.ppi.core.model.builder.GlobalModelBuilder;
 import org.ppi.core.model.solver.OptimizedViterbiSolver;
 import org.ppi.core.tour.TourBuilder;
+
+import java.util.List;
 
 public class BestMatching extends Executable<Matching> {
 	

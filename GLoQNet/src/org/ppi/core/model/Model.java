@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.ppi.preference.Preferences;
 
-
 public class Model {
 	
 	State beginState;

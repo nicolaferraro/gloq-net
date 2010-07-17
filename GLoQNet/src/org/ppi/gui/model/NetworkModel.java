@@ -13,7 +13,6 @@ import org.ppi.common.Tuple;
 import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
 
-
 public class NetworkModel extends AbstractTableModel {
 	
 	private static final long serialVersionUID = 1L;

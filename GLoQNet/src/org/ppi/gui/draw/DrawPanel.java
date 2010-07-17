@@ -8,7 +8,6 @@ import javax.swing.JScrollPane;
 import org.ppi.core.graph.Graph;
 import org.ppi.gui.graph.VisualGraph;
 
-
 public class DrawPanel extends JPanel {
 	
 	private static final long serialVersionUID = 8838266210945440962L;

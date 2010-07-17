@@ -5,7 +5,6 @@ import java.io.File;
 import org.ppi.common.execute.Executable;
 
 
-
 public abstract class AbstractNetworkParser extends Executable<NetworkParserResult> {
 
 	protected File file;

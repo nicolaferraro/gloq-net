@@ -10,7 +10,6 @@ import javax.swing.JTable;
 import org.ppi.core.graph.Graph;
 import org.ppi.gui.model.NetworkModel;
 
-
 public class NetworkViewer extends JPanel {
 	
 	private static final long serialVersionUID = 1L;

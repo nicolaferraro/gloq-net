@@ -15,7 +15,6 @@ import javax.swing.JProgressBar;
 import org.ppi.common.execute.Executable;
 import org.ppi.common.execute.ExecutionObserver;
 
-
 public class ObserverPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;

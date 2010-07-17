@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import org.ppi.core.graph.Node;
 
-
 public class SingleTreeNode extends TreeNode {
 
 	public SingleTreeNode(Node uniqueNode) {

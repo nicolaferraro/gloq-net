@@ -12,7 +12,6 @@ import java.util.Map.Entry;
 import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
 
-
 public class VisualGraph {
 
 	Graph graph;

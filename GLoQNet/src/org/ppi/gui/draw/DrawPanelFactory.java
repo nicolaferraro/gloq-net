@@ -33,7 +33,7 @@ public class DrawPanelFactory {
 		p.setLabelGenerator(gen);
 		p.setUserInterface(ui);
 		
-		DrawAreaController c = new DrawAreaController(false);
+		DrawAreaController c = new DrawAreaController(false, false);
 		c.setDrawPanel(p);
 		c.setResourceManager(resMan);
 		c.init();
@@ -55,7 +55,7 @@ public class DrawPanelFactory {
 		p.setLabelGenerator(gen);
 		p.setUserInterface(ui);
 		
-		DrawAreaController c = new DrawAreaController(true);
+		DrawAreaController c = new DrawAreaController(true, true);
 		c.setDrawPanel(p);
 		c.setResourceManager(resMan);
 		c.init();

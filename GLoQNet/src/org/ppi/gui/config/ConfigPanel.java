@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 
 import org.ppi.core.graph.Graph;
 
-
 public class ConfigPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;

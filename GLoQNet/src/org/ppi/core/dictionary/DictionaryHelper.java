@@ -5,7 +5,6 @@ import java.util.List;
 import org.ppi.core.graph.Node;
 import org.ppi.preference.Preferences;
 
-
 public class DictionaryHelper {
 
 	protected static DictionaryHelper instance;

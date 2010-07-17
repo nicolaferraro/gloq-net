@@ -6,7 +6,6 @@ import org.ppi.core.dictionary.Dictionary;
 import org.ppi.core.graph.Node;
 import org.ppi.preference.Preferences;
 
-
 public class NodeState extends State {
 	
 	List<Node> nodes;

@@ -10,7 +10,6 @@ import org.ppi.core.dictionary.Dictionary;
 import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
 
-
 public class GraphCleaner extends Executable<List<Graph>> {
 
 	List<Graph> graphs;

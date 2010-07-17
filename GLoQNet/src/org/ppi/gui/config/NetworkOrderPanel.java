@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import org.ppi.core.graph.Graph;
 import org.ppi.gui.model.NetworkOrderModel;
 
-
 public class NetworkOrderPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;

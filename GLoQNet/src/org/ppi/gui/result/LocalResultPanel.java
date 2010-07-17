@@ -16,12 +16,12 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import org.apache.log4j.Logger;
+
 import org.ppi.common.execute.PartialResultObserver;
 import org.ppi.common.result.Matching;
 import org.ppi.common.store.ResultWriter;
 import org.ppi.core.graph.Graph;
 import org.ppi.gui.file.FileChooserManager;
-
 
 public class LocalResultPanel extends JPanel implements PartialResultObserver<Set<Matching>> {
 

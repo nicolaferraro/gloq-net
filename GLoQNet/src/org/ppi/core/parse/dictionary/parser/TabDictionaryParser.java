@@ -9,7 +9,6 @@ import org.ppi.core.parse.dictionary.AbstractDictionaryParser;
 import org.ppi.core.parse.dictionary.DictionaryParserResult;
 import org.ppi.preference.Preferences;
 
-
 public class TabDictionaryParser extends AbstractDictionaryParser {
 
 	@Override
