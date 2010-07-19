@@ -64,14 +64,13 @@ public class GlobalMatching extends IncrementalExecutable<Set<Matching>, Set<Mat
 						Node n = m.getNodeList().get(i);
 
 						dict.removeNode(n.getName());
-						
-						/**
-						 * Decommentato per l'articolo ACM
-						 */
-						Set<Node> neighs = graphs.get(i).getAdjacent(n);
-						for(Node nei : neighs) {
-							dict.removeNode(nei.getName());
-						}
+
+//						// Residuo della tesi
+//						
+//						Set<Node> neighs = graphs.get(i).getAdjacent(n);
+//						for(Node nei : neighs) {
+//							dict.removeNode(nei.getName());
+//						}
 					}
 				}
 				
