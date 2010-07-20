@@ -33,6 +33,7 @@ public class PreferencePanel extends JPanel {
 	JTextField txtEscapeStateEmission;
 	JTextField txtMatchingTransition;
 	JTextField txtFailingTransition;
+	JTextField txtQueryingSubgraphsMaxDistance;
 	
 	JButton btnSave;
 	JButton btnRestore;
@@ -48,28 +49,28 @@ public class PreferencePanel extends JPanel {
 		
 		setLayout(new BorderLayout());
 		
-		JPanel p = new JPanel(new GridLayout(8, 3));
+		JPanel p = new JPanel(new GridLayout(9, 3));
 		
 		Preferences pref = Preferences.getInstance();
 		
 		JLabel label;
 		
 		label = new JLabel("Similarity Threshold:");
-		p.add(incapsulate(label));
+		p.add(encapsulate(label));
 		txtSimilarityThreshold = new JTextField(""+pref.getSimilarityThreshold());
-		p.add(incapsulate(txtSimilarityThreshold));
+		p.add(encapsulate(txtSimilarityThreshold));
 		
 		p.add(new JPanel()); // separator
 		
 		label = new JLabel("Levels:");
-		p.add(incapsulate(label));
+		p.add(encapsulate(label));
 		txtDepth = new JTextField(""+pref.getDepth());
-		p.add(incapsulate(txtDepth));
+		p.add(encapsulate(txtDepth));
 		
 		p.add(new JPanel()); // separator
 		
 		label = new JLabel("Similarity Strategy:");
-		p.add(incapsulate(label));
+		p.add(encapsulate(label));
 		cmbSimilarityStrategy = new JComboBox();
 		cmbSimilarityStrategy.setModel(new DefaultComboBoxModel() {
 
@@ -87,42 +88,49 @@ public class PreferencePanel extends JPanel {
 			
 		});
 		cmbSimilarityStrategy.setSelectedItem(pref.getSimilarityStrategy());
-		p.add(incapsulate(cmbSimilarityStrategy));
+		p.add(encapsulate(cmbSimilarityStrategy));
 		
 		p.add(new JPanel()); // separator
 		
 		label = new JLabel("Branch Limit:");
-		p.add(incapsulate(label));
+		p.add(encapsulate(label));
 		txtBranchLimit = new JTextField(""+pref.getBranchLimit());
-		p.add(incapsulate(txtBranchLimit));
+		p.add(encapsulate(txtBranchLimit));
 		
 		p.add(new JPanel()); // separator
 		
 		label = new JLabel("Special States Emission:");
-		p.add(incapsulate(label));
+		p.add(encapsulate(label));
 		txtSpecialStateEmission = new JTextField(""+pref.getSpecialStatesEmission());
-		p.add(incapsulate(txtSpecialStateEmission));
+		p.add(encapsulate(txtSpecialStateEmission));
 		
 		p.add(new JPanel()); // separator
 		
 		label = new JLabel("Escape States Emission:");
-		p.add(incapsulate(label));
+		p.add(encapsulate(label));
 		txtEscapeStateEmission = new JTextField(""+pref.getEscapeStatesEmission());
-		p.add(incapsulate(txtEscapeStateEmission));
+		p.add(encapsulate(txtEscapeStateEmission));
 		
 		p.add(new JPanel()); // separator
 		
 		label = new JLabel("Matching Transition:");
-		p.add(incapsulate(label));
+		p.add(encapsulate(label));
 		txtMatchingTransition = new JTextField(""+pref.getMatchingTransition());
-		p.add(incapsulate(txtMatchingTransition));
+		p.add(encapsulate(txtMatchingTransition));
 		
 		p.add(new JPanel()); // separator
 		
 		label = new JLabel("Failing Transition:");
-		p.add(incapsulate(label));
+		p.add(encapsulate(label));
 		txtFailingTransition = new JTextField(""+pref.getFailingTransition());
-		p.add(incapsulate(txtFailingTransition));
+		p.add(encapsulate(txtFailingTransition));
+		
+		p.add(new JPanel()); // separator
+		
+		label = new JLabel("Max Subgraphs Distance (Querying):");
+		p.add(encapsulate(label));
+		txtQueryingSubgraphsMaxDistance = new JTextField(""+pref.getQueryingSubgraphsMaxDistance());
+		p.add(encapsulate(txtQueryingSubgraphsMaxDistance));
 		
 		p.add(new JPanel()); // separator
 		
@@ -159,6 +167,7 @@ public class PreferencePanel extends JPanel {
 					pref.setSimilarityStrategy((SimilarityStrategy)cmbSimilarityStrategy.getSelectedItem());
 					pref.setSimilarityThreshold(Double.parseDouble(txtSimilarityThreshold.getText()));
 					pref.setSpecialStatesEmission(Double.parseDouble(txtSpecialStateEmission.getText()));
+					pref.setQueryingSubgraphsMaxDistance(Integer.parseInt(txtQueryingSubgraphsMaxDistance.getText()));
 					
 					changePreferences(pref);
 					
@@ -216,10 +225,11 @@ public class PreferencePanel extends JPanel {
 		txtSimilarityThreshold.setText(""+pref.getSimilarityThreshold());
 		txtSpecialStateEmission.setText(""+pref.getSpecialStatesEmission());
 		cmbSimilarityStrategy.setSelectedItem(pref.getSimilarityStrategy());
+		txtQueryingSubgraphsMaxDistance.setText("" + pref.getQueryingSubgraphsMaxDistance());
 		
 	}
 	
-	private JComponent incapsulate(JComponent comp) {
+	private JComponent encapsulate(JComponent comp) {
 		
 		boolean label = comp instanceof JLabel;
 		if(comp instanceof JTextField) {

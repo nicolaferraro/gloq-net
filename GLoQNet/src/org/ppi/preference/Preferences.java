@@ -165,6 +165,17 @@ public class Preferences {
 		setProperty(PreferenceKey.SIMILARITY_THRESHOLD, String.valueOf(similarityThreshold));
 	}
 	
+	public int getQueryingSubgraphsMaxDistance() {
+		String val = getProperty(PreferenceKey.QUERYING_SUBGRAPHS_MAX_DISTANCE);
+		return Integer.parseInt(val);
+	}
+	
+	public void setQueryingSubgraphsMaxDistance(int maxDistance) {
+		if(maxDistance<1)
+			throw new IllegalArgumentException();
+		setProperty(PreferenceKey.QUERYING_SUBGRAPHS_MAX_DISTANCE, String.valueOf(maxDistance));
+	}
+	
 	protected String getProperty(PreferenceKey key) {
 		String val = properties.getProperty(key.getKey());
 		if(val==null)
@@ -185,7 +196,8 @@ public class Preferences {
 		MATCHING_TRANSITION("transition.high.scoring", String.valueOf(0.6d)),
 		FAILING_TRANSITION("transition.low.scoring", String.valueOf(Math.pow(10, -6))),
 		SIMILARITY_THRESHOLD("similarity.threshold", String.valueOf(0.7)),
-		DEPTH("linearization.level", String.valueOf(3));
+		DEPTH("linearization.level", String.valueOf(3)),
+		QUERYING_SUBGRAPHS_MAX_DISTANCE("querying.subgraphs.max.distance", String.valueOf(2));
 		
 		String key;
 		String defaultValue;

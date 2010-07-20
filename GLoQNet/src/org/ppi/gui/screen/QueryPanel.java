@@ -16,6 +16,7 @@ import org.ppi.common.execute.IncrementalExecutable;
 import org.ppi.common.manager.DictionaryManager;
 import org.ppi.common.result.Matching;
 import org.ppi.core.algorithm.QueryingGlobalMatching;
+import org.ppi.core.algorithm.QueryingLimitedGlobalMatching;
 import org.ppi.core.algorithm.QueryingLocalMatching;
 import org.ppi.core.graph.Graph;
 import org.ppi.gui.config.ConfigPanel;
@@ -34,6 +35,7 @@ public class QueryPanel extends JPanel {
 	LocalResultPanel resPanel;
 
 	JButton globalStartButton;
+	JButton globalLimitedStartButton;
 	JButton localStartButton;
 
 	public QueryPanel() {
@@ -65,11 +67,13 @@ public class QueryPanel extends JPanel {
 		split.add(resPanel);
 
 		globalStartButton = new JButton("Start global...");
+		globalLimitedStartButton = new JButton("Start global (limited distance)...");
 		localStartButton = new JButton("Start local...");
 
 		JPanel btns = new JPanel();
 
 		btns.add(globalStartButton);
+		btns.add(globalLimitedStartButton);
 		btns.add(localStartButton);
 
 		this.add(btns, BorderLayout.SOUTH);
@@ -80,10 +84,10 @@ public class QueryPanel extends JPanel {
 
 		class StartListener implements ActionListener {
 
-			private boolean isLocal;
+			private AlgorithmType type;
 
-			public StartListener(boolean isLocal) {
-				this.isLocal = isLocal;
+			public StartListener(AlgorithmType type) {
+				this.type = type;
 			}
 
 			@Override
@@ -99,10 +103,14 @@ public class QueryPanel extends JPanel {
 				resPanel.setCurrentGraphs(resultGraphs);
 
 				IncrementalExecutable<Set<Set<Matching>>, Set<Matching>> algo;
-				if (isLocal) {
+				if (type==AlgorithmType.LOCAL) {
 					algo = new QueryingLocalMatching(graphs, queryNet, DictionaryManager.getInstance().getDictionary(), Preferences.getInstance().getDepth());
-				} else {
+				} else if(type==AlgorithmType.GLOBAL) {
 					algo = new QueryingGlobalMatching(graphs, queryNet, DictionaryManager.getInstance().getDictionary(), Preferences.getInstance().getDepth());
+				} else if(type==AlgorithmType.GLOBAL_WITH_LIMITS) {
+					algo = new QueryingLimitedGlobalMatching(graphs, queryNet, DictionaryManager.getInstance().getDictionary(), Preferences.getInstance().getDepth());
+				} else {
+					throw new IllegalStateException("Unknown algorithm");
 				}
 
 				algo.addPartialResultObserver(resPanel);
@@ -115,8 +123,13 @@ public class QueryPanel extends JPanel {
 			}
 		}
 
-		globalStartButton.addActionListener(new StartListener(false));
-		localStartButton.addActionListener(new StartListener(true));
+		localStartButton.addActionListener(new StartListener(AlgorithmType.LOCAL));
+		globalStartButton.addActionListener(new StartListener(AlgorithmType.GLOBAL));
+		globalLimitedStartButton.addActionListener(new StartListener(AlgorithmType.GLOBAL_WITH_LIMITS));
+	}
+	
+	private static enum AlgorithmType {
+		LOCAL, GLOBAL, GLOBAL_WITH_LIMITS;
 	}
 
 }
