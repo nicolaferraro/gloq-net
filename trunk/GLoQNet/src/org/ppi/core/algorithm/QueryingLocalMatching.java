@@ -1,6 +1,5 @@
 package org.ppi.core.algorithm;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -50,7 +49,7 @@ public class QueryingLocalMatching extends IncrementalExecutable<Set<Set<Matchin
 		
 		signalCurrentOperation("Computing local matching");
 		
-		Set<Set<Matching>> alignment = new HashSet<Set<Matching>>();
+		Set<Set<Matching>> alignment = new LinkedHashSet<Set<Matching>>();
 		
 		Set<Matching> partial;
 		
