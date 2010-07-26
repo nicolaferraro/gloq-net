@@ -28,6 +28,7 @@ import javax.swing.JPopupMenu;
 
 import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
+import org.ppi.core.graph.NodeFactory;
 import org.ppi.gui.draw.overlay.OverlayComponent;
 import org.ppi.gui.graph.VisualGraph;
 import org.ppi.gui.label.LabelGenerator;
@@ -282,7 +283,7 @@ public class DrawArea extends JPanel {
 			
 			lock.lock();
 			
-			Node n = new Node(labelGenerator.nextLabel());
+			Node n = NodeFactory.getInstance().createNode(labelGenerator.nextLabel());
 			visualGraph.getGraph().addNode(n);
 			visualGraph.getzOrder().add(n);
 			visualGraph.getPositions().put(n, new Point(e.getX(), e.getY()));

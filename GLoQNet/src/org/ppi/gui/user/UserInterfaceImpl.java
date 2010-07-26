@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 
 import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
+import org.ppi.core.graph.NodeFactory;
 import org.ppi.gui.graph.VisualGraph;
 
 public class UserInterfaceImpl implements UserInterface {
@@ -48,7 +49,7 @@ public class UserInterfaceImpl implements UserInterface {
 		if(editor.isChangeConfirmed()) {
 			String newName = editor.getNodeName();
 			String oldName = n.getName();
-			if(!newName.equals(oldName) && vg.getGraph().getNodes().contains(new Node(newName))) {
+			if(!newName.equals(oldName) && vg.getGraph().getNodes().contains(NodeFactory.getInstance().createNode(newName))) {
 				JOptionPane.showMessageDialog(c, "Name already present in the network. Choose another one.", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {
 				vg.changeNodeName(n, editor.getNodeName());

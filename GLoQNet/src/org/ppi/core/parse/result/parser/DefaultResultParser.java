@@ -13,6 +13,7 @@ import java.util.TreeSet;
 
 import org.ppi.common.result.Matching;
 import org.ppi.core.graph.Node;
+import org.ppi.core.graph.NodeFactory;
 import org.ppi.core.parse.result.AbstractResultParser;
 import org.ppi.core.parse.result.ResultParserResult;
 import org.ppi.preference.Constants;
@@ -64,7 +65,7 @@ public class DefaultResultParser extends AbstractResultParser {
 			
 			List<Node> nodes = new ArrayList<Node>();
 			for(String s : lineRes) {
-				nodes.add(new Node(s));
+				nodes.add(NodeFactory.getInstance().createNode(s));
 			}
 			
 			if (rowLength==null) {

@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 
 import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
+import org.ppi.core.graph.NodeFactory;
 
 public class VisualGraph {
 
@@ -59,7 +60,7 @@ public class VisualGraph {
 	}
 	
 	public void changeNodeName(Node n, String toName) {
-		Node nn = new Node(toName);
+		Node nn = NodeFactory.getInstance().createNode(toName);
 		
 		int pos = 0;
 		for(Node nod : zOrder) {

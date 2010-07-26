@@ -1,5 +1,5 @@
 #GLoQNet preferences
-#Wed Jul 21 01:03:16 CEST 2010
+#Mon Jul 26 21:10:15 CEST 2010
 emission.escape.states=1.0
 linearization.level=3
 multi.alignment.branch.limit=500

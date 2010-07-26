@@ -6,6 +6,7 @@ import java.util.StringTokenizer;
 
 import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
+import org.ppi.core.graph.NodeFactory;
 import org.ppi.core.parse.network.AbstractNetworkParser;
 import org.ppi.core.parse.network.NetworkParserResult;
 
@@ -47,8 +48,8 @@ public class TabNetworkParser extends AbstractNetworkParser {
 					continue;
 				}
 
-				Node n1 = new Node(first);
-				Node n2 = new Node(second);
+				Node n1 = NodeFactory.getInstance().createNode(first);
+				Node n2 = NodeFactory.getInstance().createNode(second);
 				
 				graph.addEdge(n1, n2);
 
