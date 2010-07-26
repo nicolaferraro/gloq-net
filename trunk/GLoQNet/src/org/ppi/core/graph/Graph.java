@@ -44,7 +44,7 @@ public class Graph {
 			addNode(n2);
 		}
 		
-		if(n1==n2)
+		if(n1.equals(n2))
 			return;
 		graph.get(n1).add(n2);
 		graph.get(n2).add(n1);
