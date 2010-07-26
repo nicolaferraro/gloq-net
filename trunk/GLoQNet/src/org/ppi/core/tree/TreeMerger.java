@@ -12,11 +12,12 @@ import org.ppi.common.execute.Executable;
 import org.ppi.core.dictionary.Dictionary;
 import org.ppi.core.dictionary.DictionaryHelper;
 import org.ppi.core.graph.Node;
+import org.ppi.core.graph.NodeFactory;
 import org.ppi.preference.Preferences;
 
 public class TreeMerger extends Executable<Set<TreeNode>> {
 	
-	private static final Node FAKE_NODE = new Node("FAKE");
+	private static final Node FAKE_NODE = NodeFactory.getInstance().createNode("FAKE");
 	
 	Set<? extends TreeNode> masterTrees;
 	Set<SingleTreeNode> slaveTrees;

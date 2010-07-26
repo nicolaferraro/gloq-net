@@ -15,6 +15,7 @@ import org.ppi.common.execute.Executable;
 import org.ppi.common.result.Matching;
 import org.ppi.core.graph.Graph;
 import org.ppi.core.graph.Node;
+import org.ppi.core.graph.NodeFactory;
 
 public class GraphMerger extends Executable<VisualGraph> {
 	
@@ -61,7 +62,7 @@ public class GraphMerger extends Executable<VisualGraph> {
 		
 		for(int i=0; i<graphs.size(); i++) {
 			for(Node n : nodes.get(i)) {
-				Node nn = new Node((i+1) + SEPARATOR + n.getName());
+				Node nn = NodeFactory.getInstance().createNode((i+1) + SEPARATOR + n.getName());
 				visualGraph.getGraph().addNode(nn);
 				nodeMap.get(i).put(n, nn);
 			}
