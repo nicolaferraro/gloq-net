@@ -68,7 +68,7 @@ public class MainWindow extends JFrame {
 		tabPane.addTab(Constants.TAB_GLOBAL_TITLE, globalPanel);
 		
 		localPanel = new LocalAlignmentPanel();
-		tabPane.addTab(Constants.TAB_LOCAL_TITLE, localPanel);
+//		tabPane.addTab(Constants.TAB_LOCAL_TITLE, localPanel);
 		
 		queryPanel = new QueryPanel();
 		tabPane.addTab(Constants.TAB_QUERY_TITLE, queryPanel);

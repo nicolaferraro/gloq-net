@@ -1,5 +1,5 @@
-<project name="GLoQNet" default="build" basedir=".">
-	<description>GLoQNet Builder</description>
+<project name="ABiNet" default="build" basedir=".">
+	<description>ABiNet Builder</description>
 	
 	<!-- Source -->
 	<property name="src" location="src" />
@@ -7,16 +7,16 @@
 	<property name="src.res" location="${src}/res" />
 	<property name="src.log.properties" location="${src}/log4j.properties" />
 	<property name="src.version.properties" value="${src}/version.properties" />
-	<property name="src.preferences" location="GLoQNet.preferences" />
+	<property name="src.preferences" location="ABiNet.preferences" />
 	
 	<!-- Properties -->
 	<property file="${src.version.properties}" />
 	
 	<!-- Export -->
 	<property name="export" location="export" />
-	<property name="export.launcher" location="${export}/GLoQNet Launcher.lnk" />
-	<property name="export.launcher.dos" location="${export}/GLoQNet_shell.bat" />
-	<property name="export.launcher.unix" location="${export}/GLoQNet_shell.sh" />
+	<property name="export.launcher" location="${export}/ABiNet Launcher.lnk" />
+	<property name="export.launcher.dos" location="${export}/ABiNet_shell.bat" />
+	<property name="export.launcher.unix" location="${export}/ABiNet_shell.sh" />
 	
 	<!-- Build -->
 	<property name="build.temp" location="temp" />
@@ -25,7 +25,7 @@
 	<property name="build.lib" location="${build.dist}/lib" />
 	
 	<!-- Application -->
-	<property name="app.name" value="GLoQNet" />
+	<property name="app.name" value="ABiNet" />
 	<property name="app.version" value="${app.main.version}.${build.number}${build.flag}" />
 	
 	<!-- Manifest -->

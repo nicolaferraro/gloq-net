@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 
 public class Preferences {
 
-	private static final File STORE_FILE = new File("GLoQNet.preferences");
+	private static final File STORE_FILE = new File("ABiNet.preferences");
 	
 	private static Preferences instance;
 	
@@ -48,7 +48,7 @@ public class Preferences {
 		
 		try {
 			out = new FileWriter(STORE_FILE);
-			properties.store(out, "GLoQNet preferences");
+			properties.store(out, "ABiNet preferences");
 			
 		} catch (Exception ex) {
 			Logger.getLogger(Preferences.class).error("Unable to store the preference file", ex);
