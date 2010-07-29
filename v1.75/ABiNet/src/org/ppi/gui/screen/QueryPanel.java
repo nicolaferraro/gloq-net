@@ -67,14 +67,14 @@ public class QueryPanel extends JPanel {
 		split.add(resPanel);
 
 		globalStartButton = new JButton("Start global...");
-		globalLimitedStartButton = new JButton("Start global (limited distance)...");
+		globalLimitedStartButton = new JButton("Query...");
 		localStartButton = new JButton("Start local...");
 
 		JPanel btns = new JPanel();
 
-		btns.add(globalStartButton);
+//		btns.add(globalStartButton);
 		btns.add(globalLimitedStartButton);
-		btns.add(localStartButton);
+//		btns.add(localStartButton);
 
 		this.add(btns, BorderLayout.SOUTH);
 
