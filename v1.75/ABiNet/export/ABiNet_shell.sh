@@ -1,1 +1,0 @@
-java -Xmx1500m -jar ABiNet.jar -t shell -n network1.dat -n network2.dat -d dict.dat -a global
