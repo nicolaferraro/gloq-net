@@ -1,0 +1,11 @@
+#GLoQNet preferences
+#Mon Jul 26 21:10:15 CEST 2010
+emission.escape.states=1.0
+linearization.level=3
+multi.alignment.branch.limit=500
+similarity.strategy=MAX
+querying.subgraphs.max.distance=2
+transition.high.scoring=0.6
+similarity.threshold=75.0
+transition.low.scoring=1.0E-6
+emission.special.states=1.0
