@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class Constants {
 
-	public static final String APPLICATION_NAME = "GLoQ-Net";
+	public static final String APPLICATION_NAME = "ABiNet";
 	public static final int INITIAL_WIDTH = 850;
 	public static final int INITIAL_HEIGHT = 650;
 	public static final int INITIAL_MAXIMIZED_STATE = JFrame.NORMAL;

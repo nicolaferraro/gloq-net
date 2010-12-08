@@ -75,24 +75,19 @@ public class QueryingLimitedGlobalMatching extends IncrementalExecutable<Set<Set
 			
 			List<Graph> graphs = initialGraphs;
 			
-			Dictionary bestPairDict = new Dictionary(dictionaryToUse);
-			Dictionary expanderDict = new Dictionary(dictionaryToUse);
+			Dictionary dict = new Dictionary(dictionaryToUse);
 			
 			for (Matching m : alignment) {
 				for (int i = 0; i < graphs.size(); i++) {
 					Node n = m.getNodeList().get(i);
 
-					bestPairDict.removeNode(n.getName());
-					expanderDict.removeNode(n.getName());
+					dict.removeNode(n.getName());
 				}
 			}
 			
-			cleanDistantNodesFromDictionary(bestPairDict, alignment, graphs);
-
-			/**
-			 * Optimization: cleaning with the largest dictionary
-			 */
-			GraphCleaner cleaner = new GraphCleaner(graphs, expanderDict);
+			cleanDistantNodesFromDictionary(dict, alignment, graphs);
+			
+			GraphCleaner cleaner = new GraphCleaner(graphs, dict);
 			launchSubProcedure(cleaner);
 
 			if (!cleaner.hasCompleted())
@@ -100,7 +95,7 @@ public class QueryingLimitedGlobalMatching extends IncrementalExecutable<Set<Set
 
 			graphs = cleaner.getResult();
 
-			FindSubgraph finder = new FindSubgraph(bestPairDict, expanderDict, graphs, depth);
+			FindSubgraph finder = new FindSubgraph(dict, graphs, depth);
 			launchSubProcedure(finder);
 
 			if (!finder.hasCompleted())
